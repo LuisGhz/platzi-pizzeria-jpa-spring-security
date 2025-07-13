@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: Platzi pizzeria jpa
+  datasource:
+    url: jdbc:mysql://localhost:3306/platzi-pizzeria?createDatabaseIfNotExist=true
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: mysql
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
