@@ -2,7 +2,9 @@ package dev.luisghtz.platzi_pizzeria_jpa.percistence.audit;
 
 import java.time.LocalDateTime;
 
+import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import jakarta.persistence.Column;
@@ -17,4 +19,12 @@ public class AuditableEntity {
   @Column(name = "modified_date")
   @LastModifiedDate
   private LocalDateTime modifiedDate;
+
+  @Column(name = "created_by")
+  @CreatedBy
+  private String createdBy;
+  
+  @Column(name = "modified_by")
+  @LastModifiedBy
+  private String modifiedBy;
 }
