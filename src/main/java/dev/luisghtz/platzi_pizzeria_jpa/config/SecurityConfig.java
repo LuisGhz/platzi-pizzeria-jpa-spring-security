@@ -22,8 +22,11 @@ public class SecurityConfig {
         .cors(cors -> {
         }) // Enable CORS with default settings
         .authorizeHttpRequests(authz -> authz
-            .requestMatchers(HttpMethod.GET, "/api/**")
-            .authenticated())
+            .requestMatchers(HttpMethod.GET, "/api/pizzas/**")
+            .hasAnyRole("ADMIN", "CUSTOMER")
+            .requestMatchers(HttpMethod.POST, "/api/pizzas/**").hasRole("ADMIN")
+            .requestMatchers(HttpMethod.PUT, "/api/orders/**").hasRole("ADMIN")
+            .anyRequest().authenticated())
         .httpBasic(hb -> {
         });
 
@@ -38,7 +41,13 @@ public class SecurityConfig {
         .roles("ADMIN")
         .build();
 
-    return new InMemoryUserDetailsManager(admin);
+    UserDetails customer = User.builder()
+        .username("customer")
+        .password(passwordEncoder().encode("customer"))
+        .roles("CUSTOMER")
+        .build();
+
+    return new InMemoryUserDetailsManager(admin, customer);
   }
 
   @Bean
