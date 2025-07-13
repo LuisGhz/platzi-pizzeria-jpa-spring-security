@@ -1,13 +1,13 @@
 -- TRUNCATE TABLES
 SET FOREIGN_KEY_CHECKS = 0;
-TRUNCATE `pizzeria`.`order_item`;
-TRUNCATE `pizzeria`.`pizza_order`;
-TRUNCATE `pizzeria`.`customer`;
-TRUNCATE `pizzeria`.`pizza`;
+TRUNCATE `platzi-pizzeria-sc`.`order_item`;
+TRUNCATE `platzi-pizzeria-sc`.`pizza_order`;
+TRUNCATE `platzi-pizzeria-sc`.`customer`;
+TRUNCATE `platzi-pizzeria-sc`.`pizza`;
 SET FOREIGN_KEY_CHECKS = 1;
 
 -- INSERT CUSTOMERS
-INSERT INTO `pizzeria`.`customer` (`id_customer`, `name`, `address`, `email`, `phone_number`)
+INSERT INTO `platzi-pizzeria-sc`.`customer` (`id`, `name`, `address`, `email`, `phone_number`)
 VALUES
 ("863264988","Drake Theory","P.O. Box 136, 4534 Lacinia St.","draketheory@hotmail.com","(826) 607-2278"),
 ("617684636","Alexa Morgan","Ap #732-8087 Dui. Road","aleximorgan@hotmail.com","(830) 212-2247"),
@@ -26,7 +26,7 @@ VALUES
 ("303265780","Shelton Owens","Ap #206-5413 Vivamus St.","figthowens@platzi.com","(821) 880-6661");
 
 -- INSERT PIZZAS
-INSERT INTO `pizzeria`.`pizza` (`id_pizza`, `name`, `description`, `price`, `vegetarian`, `vegan`, `available`)
+INSERT INTO `platzi-pizzeria-sc`.`pizza` (`id`, `name`, `description`, `price`, `vegetarian`, `vegan`, `available`)
 VALUES
 (1,"Pepperoni", "Pepperoni, Homemade Tomato Sauce & Mozzarella.", 23.0, 0, 0, 1),
 (2,"Margherita", "Fior de Latte, Homemade Tomato Sauce, Extra Virgin Olive Oil & Basil.", 18.5, 1, 0, 1),
@@ -42,7 +42,7 @@ VALUES
 (12,"Spinach Artichoke", "Fresh Spinach, Marinated Artichoke Hearts, Garlic, Fior de Latte, Mozzarella & Parmesan.", 18.95, 1, 0, 1);
 
 -- INSERT ORDERS
-INSERT INTO `pizzeria`.`pizza_order` (`id_order`, `id_customer`, `date`, `total`, `method`, `additional_notes`)
+INSERT INTO `platzi-pizzeria-sc`.`pizza_order` (`id`, `id_customer`, `date`, `total`, `method`, `additional_notes`)
 VALUES
 (1, "192758012", DATE_SUB(NOW(), INTERVAL 5 DAY), 42.95, "D", "Don't be late pls."),
 (2, "474771564", DATE_SUB(NOW(), INTERVAL 4 DAY), 62.0, "S", null),
@@ -52,7 +52,7 @@ VALUES
 (6, "782668115", NOW(), 23, "D", null);
 
 -- INSERT ORDER ITEMS
-INSERT INTO `pizzeria`.`order_item` (`id_order`, `id_item`, `id_pizza`, `quantity`, `price`)
+INSERT INTO `platzi-pizzeria-sc`.`order_item` (`id_order`, `id_item`, `id_pizza`, `quantity`, `price`)
 VALUES
 (1, 1, 1, 1, 23.0),
 (1, 2, 4, 1, 19.95),
