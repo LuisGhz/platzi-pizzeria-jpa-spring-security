@@ -2,7 +2,7 @@ spring:
   application:
     name: Platzi pizzeria jpa
   datasource:
-    url: jdbc:mysql://localhost:3306/platzi-pizzeria?createDatabaseIfNotExist=true
+    url: jdbc:mysql://localhost:3306/platzi-pizzeria-sc?createDatabaseIfNotExist=true
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
     password: mysql
